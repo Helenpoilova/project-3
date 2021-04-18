@@ -1,0 +1,17 @@
+# Tower of hanoi
+# Developers: Poylova E. 
+
+def Tower_of_hanoi(n, start, finish):
+    global step
+    if n > 0:
+        temp = 6 - start - finish # Вспомогательный стержень
+        Tower_of_hanoi(n - 1, start, temp)
+        step += 1
+        print('Шаг: {}'.format(step))
+        print("Перенести диск", n, "со стержня", start, "на стержень", finish)
+        Tower_of_hanoi(n - 1, temp, finish)
+    return step
+
+step = 0
+n, start, finish = map(int, input("Ведите количество колец, номер первого и последнего стержня через пробел: ").split())
+Tower_of_hanoi(n, start, finish)
